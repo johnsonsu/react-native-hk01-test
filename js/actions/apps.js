@@ -26,7 +26,7 @@ export function fetchApps(): ThunkAction {
   return (dispatch: Dispatch, getState: GetState) => {
     dispatch({ type: FETCH_APPS });
     fetch(
-      'https://itunes.apple.com/hk/rss/topfreeapplications/limit=10/json'
+      'https://itunes.apple.com/hk/rss/topfreeapplications/limit=100/json'
     )
       .then(response => response.json())
       .then(json => {
