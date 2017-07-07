@@ -9,7 +9,7 @@ import {
   FETCH_APPS_FAILED
 } from '../actions/apps';
 
-type AppImage = {
+export type AppImage = {
   label: string,
   attributes: {
     height: number
