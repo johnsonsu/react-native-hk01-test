@@ -4,13 +4,28 @@
  */
 
 import React from 'react';
-import { View, ActivityIndicator, StyleSheet, Dimensions } from 'react-native';
+import {
+  View,
+  ActivityIndicator,
+  StyleSheet,
+  Dimensions,
+  Text
+} from 'react-native';
+
+type Props = {
+  isLoading: boolean
+};
 
 class EmptyList extends React.PureComponent {
+  props: Props;
+
   render() {
+    const content = this.props.isLoading ?
+        <ActivityIndicator /> : <Text style={styles.noResultText}>No Result</Text>
+
     return (
       <View style={styles.container}>
-        <ActivityIndicator />
+        {content}
       </View>
     );
   }
@@ -22,6 +37,10 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  noResultText: {
+    fontSize: 20,
+    color: 'gray'
   }
 });
 

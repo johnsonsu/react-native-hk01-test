@@ -24,6 +24,12 @@ export type App = {
   'summary': {
     label: string
   },
+  'im:artist': {
+    label: string,
+    attributes: {
+      href: string
+    }
+  },
   'im:price': {
     label: string,
     attributes: {

@@ -48,7 +48,7 @@ class RecommendationList extends React.PureComponent {
       onPressItem={this._onPressItem}
     />;
 
-  _renderEmptyList = () => <EmptyList />;
+  _renderEmptyList = () => <EmptyList isLoading={this.props.recommendations === null}/>;
 
   render() {
     return (

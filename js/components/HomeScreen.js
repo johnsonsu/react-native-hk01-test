@@ -12,6 +12,7 @@ import AppList from 'AppList';
 import SearchBar from 'SearchBar';
 
 import type { State as Apps } from '../reducers/apps';
+import type { App } from '../reducers/apps';
 import type { State as Recommendations } from '../reducers/recommendations';
 
 type Props = {
@@ -21,29 +22,76 @@ type Props = {
   fetchRecommendations: () => void
 };
 
+type State = {
+  searchText: string,
+  filteredApps: Array<App>,
+  filteredRecommendations: Array<App>
+};
+
 export class HomeScreen extends React.PureComponent {
   props: Props;
+  state: State;
 
   static navigationOptions = {
     title: 'AppStore'
   };
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      searchText: '',
+      filteredApps: [],
+      filteredRecommendations: []
+    };
+  }
 
   componentDidMount() {
     this.props.fetchApps();
     this.props.fetchRecommendations();
   }
 
-  onChangeText(text: string) {
+  _onChangeText = (text: string) => {
+    this.setState({
+      searchText: text,
+      filteredApps: this.props.apps.apps
+        ? this._searchAppForText(this.props.apps.apps, text)
+        : [],
+      filteredRecommendations: this.props.recommendations.recommendations
+        ? this._searchAppForText(
+            this.props.recommendations.recommendations,
+            text
+          )
+        : []
+    });
+  }
 
+  _searchAppForText(apps: Array<App>, text: string): Array<App> {
+    return apps.filter(app => {
+      return (
+        app['im:name'].label.includes(text) ||
+        app.category.attributes.label.includes(text) ||
+        app.summary.label.includes(text) ||
+        app['im:artist'].label.includes(text)
+      );
+    });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <SearchBar />
+        <SearchBar onChangeText={this._onChangeText} />
         <AppList
-          apps={this.props.apps.apps}
-          recommendations={this.props.recommendations.recommendations}
+          apps={
+            this.state.searchText
+              ? this.state.filteredApps
+              : this.props.apps.apps
+          }
+          recommendations={
+            this.state.searchText
+              ? this.state.filteredRecommendations
+              : this.props.recommendations.recommendations
+          }
         />
       </View>
     );
