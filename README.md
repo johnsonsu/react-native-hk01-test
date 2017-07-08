@@ -1,7 +1,7 @@
 ### Introduction
 
-[![Loading Screen](https://github.com/johnsonsu/react-native-hk01-test/tree/master/screenshots/loading.png)]
-[![Home Screen](https://github.com/johnsonsu/react-native-hk01-test/tree/master/screenshots/loading.png)]
+[![Loading Screen](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/loading.png)]
+[![Home Screen](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/home.png)]
 
 This project was made for HK01 offsite test.
 
