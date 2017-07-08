@@ -61,7 +61,7 @@ class AppList extends React.Component {
     }
   };
 
-  _renderHeader = () => <RecommendationList recommendations={this.props.recommendations} />;
+  _renderHeader = () => <RecommendationList recommendations={this.props.recommendations} onPressItem={this._onPressItem} />;
 
   _renderEmptyList = () => <EmptyList isLoading={this.props.apps === null} />;
 

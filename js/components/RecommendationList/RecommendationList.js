@@ -17,7 +17,8 @@ import RecommendationListItem from 'RecommendationListItem';
 import EmptyList from 'EmptyList';
 
 type Props = {
-  recommendations: ?Array<App>
+  recommendations: ?Array<App>,
+  onPressItem: (app: App) => void
 };
 
 type State = {
@@ -38,7 +39,7 @@ class RecommendationList extends React.PureComponent {
 
   _keyExtractor = (item: App, index: number) => item.id.label;
 
-  _onPressItem = (app: App) => console.log(app);
+  _onPressItem = (app: App) => this.props.onPressItem(app);
 
   _renderItem = ({ item, index }) =>
     <RecommendationListItem
