@@ -8,15 +8,22 @@ import { View, TextInput, StyleSheet, Dimensions } from 'react-native';
 
 type Props = {
   onChangeText: (text: string) => void
-}
+};
 
 class SearchBar extends React.Component {
+  _searchBar: SearchBar;
+
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.textInput}
+        <TextInput
+          ref={(searchBar) => {this._searchBar = searchBar}}
+          style={styles.textInput}
           onChangeText={this.props.onChangeText}
-           placeholder="Search" />
+          returnKeyType="search"
+          placeholder="Search"
+          blurOnSubmit={true}
+        />
       </View>
     );
   }
