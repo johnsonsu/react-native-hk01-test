@@ -25,9 +25,7 @@ function fetchAppFailed(): Action {
 export function fetchApps(): ThunkAction {
   return (dispatch: Dispatch, getState: GetState) => {
     dispatch({ type: FETCH_APPS });
-    fetch(
-      'https://itunes.apple.com/hk/rss/topfreeapplications/limit=100/json'
-    )
+    fetch('https://itunes.apple.com/hk/rss/topfreeapplications/limit=100/json')
       .then(response => response.json())
       .then(json => {
         dispatch(fetchAppSucceed(json.feed.entry));
@@ -35,6 +33,9 @@ export function fetchApps(): ThunkAction {
       .catch(error => {
         console.warn(error);
         dispatch(fetchAppFailed());
+        if (!getState().apps.apps) {
+          setTimeout(() => dispatch(fetchApps()), 500); // re-fetch after 500 ms
+        }
       });
   };
 }

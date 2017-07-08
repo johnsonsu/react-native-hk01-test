@@ -21,7 +21,9 @@ import EmptyList from 'EmptyList';
 type Props = {
   apps: ?Array<App>,
   recommendations: ?Array<App>,
-  onItemPress: (app: App) => void
+  onItemPress: (app: App) => void,
+  onRefresh: () => void,
+  refreshing: boolean
 };
 
 type State = {
@@ -61,7 +63,11 @@ class AppList extends React.Component {
     }
   };
 
-  _renderHeader = () => <RecommendationList recommendations={this.props.recommendations} onPressItem={this._onPressItem} />;
+  _renderHeader = () =>
+    <RecommendationList
+      recommendations={this.props.recommendations}
+      onPressItem={this._onPressItem}
+    />;
 
   _renderEmptyList = () => <EmptyList isLoading={this.props.apps === null} />;
 
@@ -79,6 +85,8 @@ class AppList extends React.Component {
         renderItem={this._renderItem}
         onEndReached={this._onEndReached}
         onEndReachedThreshold={0.2}
+        onRefresh={this.props.onRefresh}
+        refreshing={this.props.refreshing}
       />
     );
   }
@@ -94,4 +102,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = AppList;
+export default AppList;

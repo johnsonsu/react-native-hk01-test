@@ -35,6 +35,9 @@ export function fetchRecommendations(): ThunkAction {
       .catch(error => {
         console.warn(error);
         dispatch(fetchRecommendationFailed());
+        if (!getState().recommendations.recommendations) {
+          setTimeout(() => dispatch(fetchRecommendations()), 500); // re-fetch after 500 ms
+        }
       });
   };
 }

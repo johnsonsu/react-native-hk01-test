@@ -67,6 +67,11 @@ export class HomeScreen extends React.PureComponent {
     });
   };
 
+  _onRefresh = () => {
+    this.props.fetchApps();
+    this.props.fetchRecommendations();
+  };
+
   _searchAppForText(apps: Array<App>, text: string): Array<App> {
     return apps.filter(app => {
       return (
@@ -80,8 +85,8 @@ export class HomeScreen extends React.PureComponent {
 
   _navigateToAppScreen = (app: App) => {
     const { navigate } = this.props.navigation;
-    navigate && navigate('App', {app});
-  }
+    navigate && navigate('App', { app });
+  };
 
   render() {
     return (
@@ -99,6 +104,10 @@ export class HomeScreen extends React.PureComponent {
               : this.props.recommendations.recommendations
           }
           onItemPress={this._navigateToAppScreen}
+          onRefresh={this._onRefresh}
+          refreshing={
+            this.props.apps.apps !== null && this.props.apps.isLoading
+          }
         />
       </View>
     );
