@@ -10,7 +10,7 @@ import {
 } from '../actions/apps';
 
 export type AppImage = {
-  label: string,
+  label: string, // image url
   attributes: {
     height: number
   }

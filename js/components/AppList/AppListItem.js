@@ -90,10 +90,10 @@ const styles = StyleSheet.create({
     marginLeft: 5
   },
   round: {
-    borderRadius: 15
+    borderRadius: 14
   },
   circle: {
-    borderRadius: 25
+    borderRadius: 32
   },
   appCategoryText: {
     color: 'gray'
