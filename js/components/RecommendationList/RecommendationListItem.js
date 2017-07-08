@@ -1,6 +1,6 @@
 /**
  * @flow
- * @providesModule AppListItem
+ * @providesModule RecommendationListItem
  */
 
 import React from 'react';
@@ -24,7 +24,7 @@ type State = {
   image: ?string
 };
 
-class AppListItem extends React.PureComponent {
+class RecomendationListItem extends React.PureComponent {
   props: Props;
   state: State;
 
@@ -46,18 +46,12 @@ class AppListItem extends React.PureComponent {
     return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.cell}>
-          <Text style={styles.indexText}>
-            {this.props.index + 1}
-          </Text>
           <Image
-            style={[
-              styles.appIcon,
-              this.props.index % 2 !== 0 ? styles.circle : styles.round
-            ]}
+            style={styles.appIcon}
             source={image ? { uri: image.label } : null}
           />
           <View style={styles.appInfo}>
-            <Text numberOfLines={2}>
+            <Text style={styles.appNameText} numberOfLines={2}>
               {this.props.app['im:name'].label}
             </Text>
             <Text style={styles.appCategoryText}>
@@ -72,37 +66,27 @@ class AppListItem extends React.PureComponent {
 
 const styles = StyleSheet.create({
   cell: {
-    flexDirection: 'row',
-    height: 80,
+    width: 100,
     alignItems: 'center'
   },
-  indexText: {
-    color: 'gray',
-    fontSize: 20,
-    width: 36,
-    marginLeft: 4,
-    textAlign: 'center',
-    fontWeight: '300'
-  },
   appIcon: {
-    width: 64,
-    height: 64,
-    marginLeft: 5
-  },
-  round: {
-    borderRadius: 15
-  },
-  circle: {
-    borderRadius: 25
+    width: 80,
+    height: 80,
+    borderRadius: 20,
   },
   appCategoryText: {
-    color: 'gray'
+    fontSize: 12,
+    color: 'gray',
+    marginTop: 2,
+  },
+  appNameText: {
+    fontSize: 12
   },
   appInfo: {
     flex: 1,
-    marginLeft: 10,
-    marginRight: 30
+    width: 80,
+    marginTop: 4,
   }
 });
 
-module.exports = AppListItem;
+module.exports = RecomendationListItem;

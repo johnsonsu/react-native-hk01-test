@@ -4,20 +4,30 @@
  */
 
 import React from 'react';
-import { FlatList, TouchableOpacity, StyleSheet, Dimensions, View } from 'react-native';
+import {
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+  View,
+  LayoutAnimation,
+  ActivityIndicator
+} from 'react-native';
 import type { App } from '../../reducers/apps';
 import AppListItem from 'AppListItem';
-
+import RecommendationList from 'RecommendationList';
+import EmptyList from 'EmptyList';
 
 type Props = {
-  apps: Array<App>
+  apps: ?Array<App>,
+  recommendations: ?Array<App>
 };
 
 type State = {
-  limit: number;
-}
+  limit: number
+};
 
-class AppList extends React.PureComponent {
+class AppList extends React.Component {
   props: Props;
   state: State;
 
@@ -29,9 +39,7 @@ class AppList extends React.PureComponent {
     };
   }
 
-  _itemSeparatorComponent = () => (
-    <View style={styles.separator}/>
-  )
+  _itemSeparatorComponent = () => <View style={styles.separator} />;
 
   _keyExtractor = (item: App, index: number) => item.id.label;
 
@@ -45,17 +53,26 @@ class AppList extends React.PureComponent {
       onPressItem={this._onPressItem}
     />;
 
-  _onEndReached = ({ distanceFromEnd: number}) => {
-    this.state.limit < 100 && this.setState({limit: this.state.limit + 10});
-  }
+  _onEndReached = ({ distanceFromEnd: number }) => {
+    if (this.state.limit < 100) {
+      LayoutAnimation.easeInEaseOut();
+      this.setState({ limit: this.state.limit + 10 });
+    }
+  };
+
+  _renderHeader = () => <RecommendationList recommendations={this.props.recommendations} />;
+
+  _renderEmptyList = () => <EmptyList />;
 
   render() {
     return (
       <FlatList
+        ListEmptyComponent={this._renderEmptyList}
+        ListHeaderComponent={this._renderHeader}
         ItemSeparatorComponent={this._itemSeparatorComponent}
         style={styles.list}
         initialNumToRender={10}
-        data={this.props.apps? this.props.apps.slice(0, this.state.limit) : []}
+        data={this.props.apps ? this.props.apps.slice(0, this.state.limit) : []}
         extraData={this.state}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
@@ -74,6 +91,6 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: 'lightgray'
   }
-})
+});
 
 module.exports = AppList;

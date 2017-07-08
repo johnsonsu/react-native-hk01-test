@@ -51,7 +51,7 @@ export type App = {
   }
 };
 
-type State = {
+export type State = {
   isLoading: boolean,
   apps: ?Array<App>
 };
@@ -82,4 +82,4 @@ function apps(state: State = initialState, action: Action): State {
   return state;
 }
 
-module.exports = apps;
+export default apps;

@@ -7,18 +7,21 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchApps } from '../actions/apps';
+import { fetchRecommendations } from '../actions/recommendations';
 import AppList from 'AppList';
+import SearchBar from 'SearchBar';
 
-import type { App } from '../reducers/apps';
-
+import type { State as Apps } from '../reducers/apps';
+import type { State as Recommendations } from '../reducers/recommendations';
 
 type Props = {
-  isLoading: boolean,
-  apps: Array<App>,
-  fetchApps: () => void
+  apps: Apps,
+  recommendations: Recommendations,
+  fetchApps: () => void,
+  fetchRecommendations: () => void
 };
 
-class HomeScreen extends React.Component {
+export class HomeScreen extends React.PureComponent {
   props: Props;
 
   static navigationOptions = {
@@ -27,12 +30,21 @@ class HomeScreen extends React.Component {
 
   componentDidMount() {
     this.props.fetchApps();
+    this.props.fetchRecommendations();
+  }
+
+  onChangeText(text: string) {
+
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <AppList apps={this.props.apps} />
+        <SearchBar />
+        <AppList
+          apps={this.props.apps.apps}
+          recommendations={this.props.recommendations.recommendations}
+        />
       </View>
     );
   }
@@ -49,8 +61,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.apps.isLoading,
-    apps: state.apps.apps
+    apps: state.apps,
+    recommendations: state.recommendations
   };
 };
 
@@ -58,8 +70,11 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchApps: () => {
       dispatch(fetchApps());
+    },
+    fetchRecommendations: () => {
+      dispatch(fetchRecommendations());
     }
   };
 };
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

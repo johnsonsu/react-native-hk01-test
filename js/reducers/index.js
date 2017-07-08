@@ -4,9 +4,11 @@
 
 import { combineReducers } from 'redux';
 import apps from './apps';
+import recommendations from './recommendations';
 
-const hk01test = combineReducers({
-  apps
+const reducers = combineReducers({
+  apps,
+  recommendations
 });
 
-export default hk01test;
+export default reducers;
