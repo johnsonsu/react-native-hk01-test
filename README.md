@@ -1,8 +1,4 @@
 ### Introduction
-
-<img src="https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/loading.png" alt="Loading Screen" style="width: 200px;"/>
-<img src="https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/home.png" alt="Loading Screen" style="width: 200px;"/>
-
 This project was made for HK01 offsite test.
 
 This project was bootstrapped using `react-native init`.
@@ -55,3 +51,10 @@ However, to run in release configuration, please use the following commands:
 
     npm run production-android // Android
     yarn run production-android // or Android with yarn
+
+
+### Screenshots
+
+
+<img src="https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/loading.png" alt="Loading Screen" style="width: 200px;"/>
+<img src="https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/home.png" alt="Loading Screen" style="width: 200px;"/>
