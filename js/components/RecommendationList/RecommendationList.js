@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
     borderBottomColor: 'lightgray',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
   },
   list: {
     height: 160

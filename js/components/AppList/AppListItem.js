@@ -36,7 +36,7 @@ class AppListItem extends React.PureComponent {
     };
   }
 
-  _onPress = (app: App) => this.props.onPressItem(app);
+  _onPress = () => this.props.onPressItem(this.props.app);
 
   render() {
     const image: ?AppImage = this.props.app['im:image'].find(

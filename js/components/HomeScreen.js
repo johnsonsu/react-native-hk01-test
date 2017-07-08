@@ -16,6 +16,7 @@ import type { App } from '../reducers/apps';
 import type { State as Recommendations } from '../reducers/recommendations';
 
 type Props = {
+  navigation: Object,
   apps: Apps,
   recommendations: Recommendations,
   fetchApps: () => void,
@@ -64,7 +65,7 @@ export class HomeScreen extends React.PureComponent {
           )
         : []
     });
-  }
+  };
 
   _searchAppForText(apps: Array<App>, text: string): Array<App> {
     return apps.filter(app => {
@@ -75,6 +76,11 @@ export class HomeScreen extends React.PureComponent {
         app['im:artist'].label.includes(text)
       );
     });
+  }
+
+  _navigateToAppScreen = (app: App) => {
+    const { navigate } = this.props.navigation;
+    navigate && navigate('App', {app});
   }
 
   render() {
@@ -92,6 +98,7 @@ export class HomeScreen extends React.PureComponent {
               ? this.state.filteredRecommendations
               : this.props.recommendations.recommendations
           }
+          onItemPress={this._navigateToAppScreen}
         />
       </View>
     );

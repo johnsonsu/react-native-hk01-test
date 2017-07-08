@@ -20,7 +20,8 @@ import EmptyList from 'EmptyList';
 
 type Props = {
   apps: ?Array<App>,
-  recommendations: ?Array<App>
+  recommendations: ?Array<App>,
+  onItemPress: (app: App) => void
 };
 
 type State = {
@@ -43,7 +44,7 @@ class AppList extends React.Component {
 
   _keyExtractor = (item: App, index: number) => item.id.label;
 
-  _onPressItem = (app: App) => console.log(app);
+  _onPressItem = (app: App) => this.props.onItemPress(app);
 
   _renderItem = ({ item, index }) =>
     <AppListItem
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   separator: {
-    height: 1,
+    height: 0.5,
     backgroundColor: 'lightgray'
   }
 });
