@@ -17,12 +17,15 @@ class SearchBar extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput
-          ref={(searchBar) => {this._searchBar = searchBar}}
+          ref={searchBar => {
+            this._searchBar = searchBar;
+          }}
           style={styles.textInput}
           onChangeText={this.props.onChangeText}
           returnKeyType="search"
           placeholder="Search"
           blurOnSubmit={true}
+          underlineColorAndroid="transparent"
         />
       </View>
     );
@@ -38,7 +41,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomColor: 'lightgray',
-    borderBottomWidth: 0.5
+    borderBottomWidth: 0.5,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   textInput: {
     height: 28,
@@ -46,7 +51,8 @@ const styles = StyleSheet.create({
     width: WIDTH - 20,
     backgroundColor: '#dddddd',
     borderRadius: 6,
-    textAlign: 'center'
+    textAlign: 'center',
+    paddingVertical: 0
   }
 });
 

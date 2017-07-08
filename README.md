@@ -55,8 +55,14 @@ However, to run in release configuration, please use the following commands:
 
 ### Screenshots
 
-![alt text](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/loading.png)
+![Loading Screen](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/loading.png)
 
-![alt text](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/home.png)
+![Home Screen](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/home.png)
 
-![alt text](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/app.png)
+![Search Screen](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/search.png)
+
+![App Screen](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/app.png)
+
+![Android Home Screen](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/android-home.png)
+
+![Android App Screen](https://github.com/johnsonsu/react-native-hk01-test/raw/master/screenshots/android-app.png)

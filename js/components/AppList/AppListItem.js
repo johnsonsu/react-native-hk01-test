@@ -57,7 +57,7 @@ class AppListItem extends React.PureComponent {
             source={image ? { uri: image.label } : null}
           />
           <View style={styles.appInfo}>
-            <Text numberOfLines={2}>
+            <Text style={styles.appName} numberOfLines={2}>
               {this.props.app['im:name'].label}
             </Text>
             <Text style={styles.appCategoryText}>
@@ -97,6 +97,9 @@ const styles = StyleSheet.create({
   },
   appCategoryText: {
     color: 'gray'
+  },
+  appName: {
+    color: 'black'
   },
   appInfo: {
     flex: 1,

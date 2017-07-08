@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   appNameText: {
+    color: 'black',
     fontSize: 12
   },
   appInfo: {
-    flex: 1,
     width: 80,
     marginTop: 4,
   }

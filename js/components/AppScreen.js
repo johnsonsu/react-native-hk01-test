@@ -71,9 +71,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   appName: {
+    color: 'black',
     fontSize: 18
   },
   authorName: {
+    color: 'black',
     paddingTop: 2,
     fontSize: 12
   },
@@ -81,6 +83,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   sectionHeaderText: {
+    color: 'black',
     fontSize: 16,
     paddingVertical: 8,
   },

@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     height: 160
   },
   titleText: {
+    color: 'black',
     marginLeft: 10,
     marginBottom: 10,
     fontSize: 20,
