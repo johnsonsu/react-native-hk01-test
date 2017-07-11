@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchApps } from '../actions/apps';
 import { fetchRecommendations } from '../actions/recommendations';

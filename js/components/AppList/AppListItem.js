@@ -4,14 +4,7 @@
  */
 
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Image,
-  View,
-  Dimensions
-} from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Image, View } from 'react-native';
 import type { App, AppImage } from '../../reducers/apps';
 
 type Props = {
@@ -108,4 +101,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = AppListItem;
+export default AppListItem;

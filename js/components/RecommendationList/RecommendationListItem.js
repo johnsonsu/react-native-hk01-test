@@ -4,14 +4,7 @@
  */
 
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Image,
-  View,
-  Dimensions
-} from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Image, View } from 'react-native';
 import type { App, AppImage } from '../../reducers/apps';
 
 type Props = {
@@ -72,12 +65,12 @@ const styles = StyleSheet.create({
   appIcon: {
     width: 80,
     height: 80,
-    borderRadius: 20,
+    borderRadius: 20
   },
   appCategoryText: {
     fontSize: 12,
     color: 'gray',
-    marginTop: 2,
+    marginTop: 2
   },
   appNameText: {
     color: 'black',
@@ -85,8 +78,8 @@ const styles = StyleSheet.create({
   },
   appInfo: {
     width: 80,
-    marginTop: 4,
+    marginTop: 4
   }
 });
 
-module.exports = RecomendationListItem;
+export default RecomendationListItem;

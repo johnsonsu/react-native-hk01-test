@@ -4,14 +4,7 @@
  */
 
 import React from 'react';
-import {
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-  View,
-  Text
-} from 'react-native';
+import { FlatList, StyleSheet, View, Text } from 'react-native';
 import type { App } from '../../reducers/apps';
 import RecommendationListItem from 'RecommendationListItem';
 import EmptyList from 'EmptyList';
@@ -37,7 +30,7 @@ class RecommendationList extends React.PureComponent {
     };
   }
 
-  _keyExtractor = (item: App, index: number) => item.id.label;
+  _keyExtractor = (item: App) => item.id.label;
 
   _onPressItem = (app: App) => this.props.onPressItem(app);
 
@@ -49,22 +42,19 @@ class RecommendationList extends React.PureComponent {
       onPressItem={this._onPressItem}
     />;
 
-  _renderEmptyList = () => <EmptyList isLoading={this.props.recommendations === null}/>;
+  _renderEmptyList = () =>
+    <EmptyList isLoading={this.props.recommendations === null} />;
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>
-          Recommendations
-        </Text>
+        <Text style={styles.titleText}>Recommendations</Text>
         <FlatList
           ListEmptyComponent={this._renderEmptyList}
           horizontal={true}
           style={styles.list}
           initialNumToRender={10}
-          data={
-            this.props.recommendations
-          }
+          data={this.props.recommendations}
           extraData={this.state}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
@@ -78,7 +68,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
     borderBottomColor: 'lightgray',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.5
   },
   list: {
     height: 160
@@ -88,7 +78,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginBottom: 10,
     fontSize: 20,
-    fontWeight: '400',
+    fontWeight: '400'
   }
 });
 

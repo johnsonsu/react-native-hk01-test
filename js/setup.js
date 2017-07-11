@@ -27,4 +27,4 @@ function setup() {
   return Root;
 }
 
-module.exports = setup;
+export default setup;

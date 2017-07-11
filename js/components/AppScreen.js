@@ -12,7 +12,9 @@ type Props = {
 };
 
 class AppScreen extends React.Component {
-  static navigationOptions = ({ navigation, screenProps }) => ({
+  props: Props;
+
+  static navigationOptions = ({ navigation }) => ({
     title: navigation.state.params.app['im:name'].label
   });
 

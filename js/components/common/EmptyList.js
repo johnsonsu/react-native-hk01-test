@@ -20,8 +20,9 @@ class EmptyList extends React.PureComponent {
   props: Props;
 
   render() {
-    const content = this.props.isLoading ?
-        <ActivityIndicator /> : <Text style={styles.noResultText}>No Result</Text>
+    const content = this.props.isLoading
+      ? <ActivityIndicator />
+      : <Text style={styles.noResultText}>No Result</Text>;
 
     return (
       <View style={styles.container}>

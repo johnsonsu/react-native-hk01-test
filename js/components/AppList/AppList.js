@@ -6,12 +6,10 @@
 import React from 'react';
 import {
   FlatList,
-  TouchableOpacity,
   StyleSheet,
   Dimensions,
   View,
-  LayoutAnimation,
-  ActivityIndicator
+  LayoutAnimation
 } from 'react-native';
 import type { App } from '../../reducers/apps';
 import AppListItem from 'AppListItem';
@@ -44,7 +42,7 @@ class AppList extends React.Component {
 
   _itemSeparatorComponent = () => <View style={styles.separator} />;
 
-  _keyExtractor = (item: App, index: number) => item.id.label;
+  _keyExtractor = (item: App) => item.id.label;
 
   _onPressItem = (app: App) => this.props.onItemPress(app);
 
@@ -56,7 +54,7 @@ class AppList extends React.Component {
       onPressItem={this._onPressItem}
     />;
 
-  _onEndReached = ({ distanceFromEnd: number }) => {
+  _onEndReached = () => {
     if (this.state.limit < 100) {
       LayoutAnimation.easeInEaseOut();
       this.setState({ limit: this.state.limit + 10 });

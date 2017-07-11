@@ -3,6 +3,8 @@
  * @providesModule SearchBar
  */
 
+'use strict';
+
 import React from 'react';
 import { View, TextInput, StyleSheet, Dimensions } from 'react-native';
 
@@ -11,6 +13,7 @@ type Props = {
 };
 
 class SearchBar extends React.Component {
+  props: Props;
   _searchBar: SearchBar;
 
   render() {
@@ -41,9 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomColor: 'lightgray',
-    borderBottomWidth: 0.5,
-    justifyContent: 'center',
-    alignItems: 'center'
+    borderBottomWidth: 0.5
   },
   textInput: {
     height: 28,
